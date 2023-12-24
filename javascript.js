@@ -3,13 +3,10 @@ let userInput;
 let userWins = 0;
 let userLosses = 0;
 let cpuInput;
-
 let options = ['rock','paper','scissors']
 
-let resultFinal;
 
-
-bestOfThree();
+gameBestOfThree();
 
 if (userWins == 3){
   console.log(`***** YOU WIN, HUMANITY IS SAVED *****`)
@@ -19,7 +16,7 @@ else {
 }
 
 
-function bestOfThree(){
+function gameBestOfThree(){
   while(userWins < 3 && userLosses < 3){
     console.log(playRound());
   }
