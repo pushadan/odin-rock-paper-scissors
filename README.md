@@ -29,10 +29,10 @@ What’s the desired output?
 
 3. Psuedocode
     0. REPEAT steps 1-4 ✓
-      1. GET playerSelection (user input)
-        - should be case insensitive
-      2. SET cpuInput (computer input)
-        - random choice
+      1. GET playerSelection (user input) ✓
+        - should be case insensitive ✓
+      2. SET cpuInput (computer input) ✓
+        - random choice ✓
       3. COMPARE inputs 
         - determine the winner based on results
       4. PRINT the result/winner 
