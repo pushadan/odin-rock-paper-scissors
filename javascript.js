@@ -6,7 +6,7 @@ let cpuInput;
 let options = ['rock','paper','scissors']
 
 
-gameBestOfThree();
+playBestOfThree();
 
 if (userWins == 3){
   console.log(`***** YOU WIN, HUMANITY IS SAVED *****`)
@@ -16,17 +16,17 @@ else {
 }
 
 
-function gameBestOfThree(){
+function playBestOfThree(){
   while(userWins < 3 && userLosses < 3){
     console.log(playRound());
   }
-}
+};
 
 function playRound(){
     
   //get user input
-  correctInput = false;
-  while (correctInput == false){
+  inputCheckFlag = true;
+  while (inputCheckFlag == true){
     userInput = prompt('Rock, Paper or Scissors?');
     userInput = userInput.toLowerCase();
     //check if correct input
@@ -34,7 +34,7 @@ function playRound(){
   }
 
   //get random cpu input
-  cpuInput = options[randomChoice(0,2)];
+  cpuInput = options[getRandomInt(0,2)];
 
   //compare inputs, add Win or Loss
   if (userInput === cpuInput){
@@ -50,26 +50,27 @@ function playRound(){
   }
 };
 
-function randomChoice(min,max){
+function getRandomInt(min,max){
   return Math.floor(Math.random() * (max - min) + min);
 };
 
 function checkUserInput(input) {
   switch (input){
     case "rock": {
-      correctInput = true;
+      inputCheckFlag = false;
       break;
     };
     case "paper": {
-      correctInput = true;
+      inputCheckFlag = false;
       break;
     };
     case "scissors": {
-      correctInput = true;
+      inputCheckFlag = false;
       break;
     };
     default: {
       alert("ฅ^•ﻌ•^ฅ Bean say you can't submit that answer")
-      break;};
+      break;
+    };
   };
 };
