@@ -1,19 +1,33 @@
-
+//functional variables
 let userInput;
 let userWins = 0;
 let userLosses = 0;
 let cpuInput;
-let options = ['rock','paper','scissors']
+const options = ['rock','paper','scissors']
+
+//DOM variables
+let scoreDisplayArr = [] = document.querySelectorAll(".score");
+let selectionArr = [] = document.querySelectorAll(".selection");
+let roundResultDisplay = document.querySelector(".roundResult");
+let userChoice = document.querySelector(".choiceContainer");
+let play = document.querySelector(".play");
 
 
-playBestOfThree();
+play.addEventListener("click", ()=>{
+  if (userInput !== ""){
+    playBestOfThree();
+  };
+  if (userWins == 3){
+    console.log(`***** YOU WIN, HUMANITY IS SAVED *****`);
+    roundResultDisplay.textContent = "YOU WIN!"
+  }
+  else {
+    console.log(`***** YOU LOSE, HUMANITY IS DOOMED *****`)
+    roundResultDisplay.textContent = "YOU LOSE!"
+  };
+});
 
-if (userWins == 3){
-  console.log(`***** YOU WIN, HUMANITY IS SAVED *****`)
-}
-else {
-  console.log(`***** YOU LOSE, HUMANITY IS DOOMED *****`)
-}
+
 
 
 function playBestOfThree(){
@@ -27,7 +41,7 @@ function playRound(){
   //get user input
   inputCheckFlag = true;
   while (inputCheckFlag == true){
-    userInput = prompt('Rock, Paper or Scissors?');
+    // userInput = prompt('Rock, Paper or Scissors?');
     userInput = userInput.toLowerCase();
     //check if correct input
     checkUserInput(userInput);

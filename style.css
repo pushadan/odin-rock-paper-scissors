@@ -1,14 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+
 body{
-  background-color: rgb(120, 120, 120);
   margin: 0;
   padding: 0;
+  text-align: center;
+  background-color: #EDF2F4;
+  color: #2B2D42;
 }
 
 .master{
   display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+}
+
+.titleContainer{
+  margin: 10px;
+}
+.title{
+  font-size: 30px;
+  font-family: Roboto Slab;
+  font-weight: bolder;
+}
+.subtitle{
+  font-size: 20px;
+  font-family: Roboto Slab;
+  font-weight: lighter;
+}
+
+.mainContainer{
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  gap: 50px;
+}
+
+.cpuContainer, .userContainer, .resultsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.score{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-family: Roboto Slab;
+  font-weight: bold;
+  border: 2px solid black; 
+  border-radius: 10px;
+}
+.selection{
+  width: 150px;
+  height: 150px;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player{
+  font-family: Roboto Slab;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.results{
+  width: 100px;
+  height: 100px;
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-family: Roboto Slab;
+}
+
+
+.roundResultContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.roundResult{
+  width: 200px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: Roboto Slab;
+  font-weight: bolder;
+}
+
+.choiceContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-top: 20px;
+}
+.rock, .paper, .scissors{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 60px;
+  border-radius: 10px;
+  background-color: #EDF2F4;
+  box-shadow:  10px 10px 19px #bec2c3,
+              -10px -10px 19px #ffffff;
+}
+.rock:hover, .paper:hover, .scissors:hover{
+  background-color: #b5bcbe;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+.playContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play{
+  width: 100px;
+  height: 30px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto Slab;
+  border: 2px solid #2B2D42;
+  border-radius: 10px;
+  background-color: #999d9e;
+  font-size: 20px;
+  box-shadow:  10px 10px 19px #bec2c3,
+  -10px -10px 19px #ffffff;
+}
+.play:hover{
+  background-color: #999d9e;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
 }
 
 h1{
