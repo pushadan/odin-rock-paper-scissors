@@ -4,87 +4,107 @@ let userWins = 0;
 let userLosses = 0;
 let cpuInput;
 const options = ['rock','paper','scissors']
+let replayFlag = false;
 
 //DOM variables
 let scoreDisplayArr = [] = document.querySelectorAll(".score");
-let selectionArr = [] = document.querySelectorAll(".selection");
+let selectionDisplayArr = [] = document.querySelectorAll(".selection");
 let roundResultDisplay = document.querySelector(".roundResult");
 let userChoice = document.querySelector(".choiceContainer");
 let play = document.querySelector(".play");
 
+//rock, paper, or scissors buttons
+userChoice.addEventListener("click", (e)=>{
+  userInput = e.target.className;
 
+  searchingIndex = options.indexOf(userInput);
+  let choice = options[searchingIndex]; 
+
+  //0 = user input
+  selectEmoji(choice, 0);
+  play.disabled = false;
+});
+
+//play button
 play.addEventListener("click", ()=>{
-  if (userInput !== ""){
-    playBestOfThree();
-  };
-  if (userWins == 3){
-    console.log(`***** YOU WIN, HUMANITY IS SAVED *****`);
-    roundResultDisplay.textContent = "YOU WIN!"
+  if (replayFlag){
+    resetGame();
   }
-  else {
-    console.log(`***** YOU LOSE, HUMANITY IS DOOMED *****`)
-    roundResultDisplay.textContent = "YOU LOSE!"
-  };
+  else if (userInput !== ""){
+    playRound();
+  }
+  if (userWins === 3){
+    roundResultDisplay.textContent = "YOU WIN!";
+    play.textContent = "Replay?";
+    replayFlag = true;
+  }
+  if (userLosses === 3) {
+    roundResultDisplay.textContent = "YOU LOSE!";
+    play.textContent = "Replay?";
+    replayFlag = true;
+  }
 });
 
 
-
-
-function playBestOfThree(){
-  while(userWins < 3 && userLosses < 3){
-    console.log(playRound());
-  }
-};
-
+//play round of rock, paper, scissors
 function playRound(){
-    
-  //get user input
-  inputCheckFlag = true;
-  while (inputCheckFlag == true){
-    // userInput = prompt('Rock, Paper or Scissors?');
-    userInput = userInput.toLowerCase();
-    //check if correct input
-    checkUserInput(userInput);
-  }
-
   //get random cpu input
-  cpuInput = options[getRandomInt(0,2)];
+  cpuInput = options[getRandomInt(0,3)];
+  //1 = cpu input
+  selectEmoji(cpuInput, 1);
 
   //compare inputs, add Win or Loss
   if (userInput === cpuInput){
-    return `TIE! You chose: ${userInput}, the CPU chose: ${cpuInput}\nWINS: ${userWins} \nLOSSES: ${userLosses}\n---------------------------`;
+    roundResultDisplay.textContent = "Round Tie";
   }
   else if(userInput == "rock" && cpuInput == "scissors" || userInput == "paper" && cpuInput == "rock" || userInput == "scissors" && cpuInput == "paper"){
     userWins++;
-    return `You WIN! You chose: ${userInput}, the CPU chose: ${cpuInput}\nWINS: ${userWins}\nLOSSES: ${userLosses}\n---------------------------`;
+    scoreDisplayArr[0].textContent = userWins;
+    roundResultDisplay.textContent = "Round Win";
   }
   else{
     userLosses++;
-    return `You LOSE! You chose: ${userInput}, the CPU chose: ${cpuInput}\nWINS: ${userWins}\nLOSSES: ${userLosses}\n---------------------------`;
+    scoreDisplayArr[1].textContent = userLosses;
+    roundResultDisplay.textContent = "Round Loss";
   }
 };
 
+//get random int
 function getRandomInt(min,max){
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-function checkUserInput(input) {
-  switch (input){
-    case "rock": {
-      inputCheckFlag = false;
+function selectEmoji(choice, user){
+  switch (choice){
+    case "rock":{
+      selectionDisplayArr[user].textContent = "🪨";
       break;
-    };
-    case "paper": {
-      inputCheckFlag = false;
+    } 
+    case "paper":{
+      selectionDisplayArr[user].textContent = "📃";
       break;
-    };
-    case "scissors": {
-      inputCheckFlag = false;
+    }
+    case "scissors":{
+      selectionDisplayArr[user].textContent = "✂️";
       break;
-    };
-    default: {
-      alert("ฅ^•ﻌ•^ฅ Bean say you can't submit that answer")
+    }
+    default:{
       break;
-    };
+    }
   };
-};
+}
+
+//reset game
+function resetGame(){
+  userWins = 0;
+  userLosses = 0;
+  userInput = "";
+  scoreDisplayArr[0].textContent = 0;
+  scoreDisplayArr[1].textContent = 0;
+  roundResultDisplay.textContent = "Make your selection...";
+  play.textContent = "Play";
+  play.disabled = true;
+  selectionDisplayArr[0].textContent = "❓";
+  selectionDisplayArr[1].textContent = "❓";
+  replayFlag = false;
+}

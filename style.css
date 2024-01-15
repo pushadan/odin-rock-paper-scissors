@@ -139,7 +139,7 @@ body{
   font-family: Roboto Slab;
   border: 2px solid #2B2D42;
   border-radius: 10px;
-  background-color: #999d9e;
+  /* background-color: #999d9e; */
   font-size: 20px;
   box-shadow:  10px 10px 19px #bec2c3,
   -10px -10px 19px #ffffff;
